@@ -14,26 +14,11 @@ class Home extends StatefulWidget {
   const Home({
     super.key,
     required this.useLightMode,
-    required this.useMaterial3,
-    required this.colorSelected,
     required this.handleBrightnessChange,
-    required this.handleMaterialVersionChange,
-    required this.handleColorSelect,
-    required this.handleImageSelect,
-    required this.colorSelectionMethod,
-    required this.imageSelected,
   });
 
   final bool useLightMode;
-  final bool useMaterial3;
-  final ColorSeed colorSelected;
-  final ColorImageProvider imageSelected;
-  final ColorSelectionMethod colorSelectionMethod;
-
   final void Function(bool useLightMode) handleBrightnessChange;
-  final void Function() handleMaterialVersionChange;
-  final void Function(int value) handleColorSelect;
-  final void Function(int value) handleImageSelect;
 
   @override
   State<Home> createState() => _HomeState();
@@ -134,26 +119,11 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
   PreferredSizeWidget createAppBar() {
     return AppBar(
-      title: widget.useMaterial3
-          ? const Text('Material 3')
-          : const Text('Material 2'),
+      title: const Text('Material 3'),
       actions: !showMediumSizeLayout && !showLargeSizeLayout
           ? [
               _BrightnessButton(
                 handleBrightnessChange: widget.handleBrightnessChange,
-              ),
-              _Material3Button(
-                handleMaterialVersionChange: widget.handleMaterialVersionChange,
-              ),
-              _ColorSeedButton(
-                handleColorSelect: widget.handleColorSelect,
-                colorSelected: widget.colorSelected,
-                colorSelectionMethod: widget.colorSelectionMethod,
-              ),
-              _ColorImageButton(
-                handleImageSelect: widget.handleImageSelect,
-                imageSelected: widget.imageSelected,
-                colorSelectionMethod: widget.colorSelectionMethod,
               )
             ]
           : [Container()],
@@ -167,26 +137,6 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             child: _BrightnessButton(
               handleBrightnessChange: widget.handleBrightnessChange,
               showTooltipBelow: false,
-            ),
-          ),
-          Flexible(
-            child: _Material3Button(
-              handleMaterialVersionChange: widget.handleMaterialVersionChange,
-              showTooltipBelow: false,
-            ),
-          ),
-          Flexible(
-            child: _ColorSeedButton(
-              handleColorSelect: widget.handleColorSelect,
-              colorSelected: widget.colorSelected,
-              colorSelectionMethod: widget.colorSelectionMethod,
-            ),
-          ),
-          Flexible(
-            child: _ColorImageButton(
-              handleImageSelect: widget.handleImageSelect,
-              imageSelected: widget.imageSelected,
-              colorSelectionMethod: widget.colorSelectionMethod,
             ),
           ),
         ],
@@ -221,14 +171,6 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                     ? _ExpandedTrailingActions(
                         useLightMode: widget.useLightMode,
                         handleBrightnessChange: widget.handleBrightnessChange,
-                        useMaterial3: widget.useMaterial3,
-                        handleMaterialVersionChange:
-                            widget.handleMaterialVersionChange,
-                        handleImageSelect: widget.handleImageSelect,
-                        handleColorSelect: widget.handleColorSelect,
-                        colorSelectionMethod: widget.colorSelectionMethod,
-                        imageSelected: widget.imageSelected,
-                        colorSelected: widget.colorSelected,
                       )
                     : _trailingActions(),
               ),
@@ -420,26 +362,10 @@ class _ExpandedTrailingActions extends StatelessWidget {
   const _ExpandedTrailingActions({
     required this.useLightMode,
     required this.handleBrightnessChange,
-    required this.useMaterial3,
-    required this.handleMaterialVersionChange,
-    required this.handleColorSelect,
-    required this.handleImageSelect,
-    required this.imageSelected,
-    required this.colorSelected,
-    required this.colorSelectionMethod,
   });
 
-  final void Function(bool) handleBrightnessChange;
-  final void Function() handleMaterialVersionChange;
-  final void Function(int) handleImageSelect;
-  final void Function(int) handleColorSelect;
-
   final bool useLightMode;
-  final bool useMaterial3;
-
-  final ColorImageProvider imageSelected;
-  final ColorSeed colorSelected;
-  final ColorSelectionMethod colorSelectionMethod;
+  final void Function(bool) handleBrightnessChange;
 
   @override
   Widget build(BuildContext context) {
@@ -462,31 +388,7 @@ class _ExpandedTrailingActions extends StatelessWidget {
                   })
             ],
           ),
-          Row(
-            children: [
-              useMaterial3
-                  ? const Text('Material 3')
-                  : const Text('Material 2'),
-              Expanded(child: Container()),
-              Switch(
-                  value: useMaterial3,
-                  onChanged: (_) {
-                    handleMaterialVersionChange();
-                  })
-            ],
-          ),
-          const Divider(),
-          _ExpandedColorSeedAction(
-            handleColorSelect: handleColorSelect,
-            colorSelected: colorSelected,
-            colorSelectionMethod: colorSelectionMethod,
-          ),
-          const Divider(),
-          _ExpandedImageColorAction(
-            handleImageSelect: handleImageSelect,
-            imageSelected: imageSelected,
-            colorSelectionMethod: colorSelectionMethod,
-          ),
+          
         ],
       ),
     );

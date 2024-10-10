@@ -13,6 +13,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  freezed_annotation: ^2.4.1
 
   cupertino_icons: ^1.0.5
   url_launcher: ^6.1.12
@@ -22,8 +23,59 @@ dev_dependencies:
     sdk: flutter
   integration_test:
     sdk: flutter
+  freezed: ^2.5.2
+  build_runner: ^2.4.9
 
   flutter_lints: ^2.0.2
 
 flutter:
   uses-material-design: true
+
+assets:
+    - assets/images/
+
+fonts:
+    - family: ABCDiatype
+      fonts:
+        - asset: assets/fonts/ABCDiatype/ABCDiatype-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/ABCDiatype/ABCDiatype-BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/ABCDiatype/ABCDiatype-Light.ttf
+          weight: 300
+        - asset: assets/fonts/ABCDiatype/ABCDiatype-LightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/ABCDiatype/ABCDiatype-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/ABCDiatype/ABCDiatype-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/ABCDiatype/ABCDiatype-Regular.ttf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/ABCDiatype/ABCDiatype-RegularItalic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/ABCDiatype/ABCDiatype-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/ABCDiatype/ABCDiatype-ThinItalic.ttf
+          weight: 100
+          style: italic
+    - family: Romie
+      fonts:
+        - asset: assets/fonts/Romie/Romie-Regular.otf
+          weight: 400
+        - asset: assets/fonts/Romie/Romie-Black.otf
+          weight: 900
+        - asset: assets/fonts/Romie/Romie-Bold.otf
+          weight: 700
+        - asset: assets/fonts/Romie/Romie-Heavy.otf
+          weight: 800
+        - asset: assets/fonts/Romie/Romie-Light.otf
+          weight: 300
+        - asset: assets/fonts/Romie/Romie-Medium.otf
+          weight: 500
+        - asset: assets/fonts/Romie/Romie-Regular-Italic.otf
+          style: italic
